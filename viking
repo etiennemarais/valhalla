@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Set base path to start of with
+BASE_DIR=$( cd "$( dirname "$0" )" && pwd )
+
+# Autoload all the /src files
+for i in "${BASE_DIR}"/src/*.sh ; do
+    if [ -f "$i" ]; then
+        . $i
+    fi
+done
+
+# Initialise the config file with variables
+eval $(parseYaml "${BASE_DIR}"/config.yml "config_")
+
+# Options to start the environment with
+case $1 in
+  start)
+    outputInYellow "[Something started]"
+  ;;
+esac

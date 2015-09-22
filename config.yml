@@ -1,0 +1,5 @@
+databases:
+    host: localhost
+    database: valhalla
+    username: root
+    password:
