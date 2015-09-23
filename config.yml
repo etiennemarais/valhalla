@@ -1,5 +1,12 @@
+workspace:
+    path: /Users/etiennemarais/Documents/workspace/Sites
+
+environment:
+    autoupdate: true
+
 databases:
-    host: localhost
-    database: valhalla
-    username: root
-    password:
+    valhalla:
+        host: localhost
+        database: valhalla
+        username: root
+        password:

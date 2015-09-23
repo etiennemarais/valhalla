@@ -15,7 +15,25 @@ eval $(parseYaml "${BASE_DIR}"/config.yml "config_")
 
 # Options to start the environment with
 case $1 in
-  start)
-    outputInYellow "[Something started]"
-  ;;
+    start)
+        outputInYellow "[Checking volume mount point]"
+        if [ -z "${config_workspace_path}" ]; then
+            error "Missing ${config_workspace_path} .. do you miss the config.yml file?"
+        fi
+        checkForVolumeMountpoint $config_workspace_path
+
+        if [ "$config_environment_autoupdate" = "true" ]; then
+            selfUpdateUsingGit
+        fi
+    ;;
+    *)
+        exit_code=0
+        if [ -z "$1" ]; then
+          outputInRed "ERROR: Missing action to start Valhalla"
+          exit_code=2
+        fi
+
+        # TODO Help needs to get shown here
+        exit $exit_code
+    ;;
 esac
