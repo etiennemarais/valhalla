@@ -25,6 +25,10 @@ case $1 in
         if [ "$config_environment_autoupdate" = "true" ]; then
             selfUpdateUsingGit
         fi
+
+        for image in $config_images ; do
+            buildDockerImage $image
+        done
     ;;
     *)
         exit_code=0

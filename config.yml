@@ -10,3 +10,6 @@ databases:
         database: valhalla
         username: root
         password:
+
+images:
+    - base
