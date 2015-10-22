@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:14.04.3
 MAINTAINER tim@haak.co.uk
 
 ENV DEBIAN_FRONTEND="noninteractive" \
