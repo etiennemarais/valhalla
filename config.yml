@@ -1,8 +1,8 @@
 workspace:
-    path: /Users/etiennemarais/Documents/workspace/Sites
+    - /Users/etiennemarais/Documents/workspace/Sites
 
 environment:
-    autoupdate: true
+    autoupdate: false
 
 databases:
     valhalla:
@@ -13,3 +13,5 @@ databases:
 
 images:
     - base
+    - data
+    - phpfpm

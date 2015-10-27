@@ -17,16 +17,16 @@ eval $(parseYaml "${BASE_DIR}"/config.yml "config_")
 case $1 in
     start)
         outputInYellow "[Checking volume mount point]"
-        if [ -z "${config_workspace_path}" ]; then
-            error "Missing ${config_workspace_path} .. do you miss the config.yml file?"
+        if [ -z "${config_workspace}" ]; then
+            error "Missing ${config_workspace} .. do you miss the config.yml file?"
         fi
-        checkForVolumeMountpoint $config_workspace_path
+        checkForVolumeMountpoint $config_workspace
 
         if [ "$config_environment_autoupdate" = "true" ]; then
             selfUpdateUsingGit
         fi
 
-        for image in $config_images ; do
+        for image in ${config_images[@]} ; do
             buildDockerImage $image
         done
     ;;

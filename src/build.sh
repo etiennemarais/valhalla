@@ -4,14 +4,14 @@
 
 buildDockerImage() {
     outputInYellow "[Building docker image: $*]"
-    docker build -t asgard/$image $BASE_DIR/images/$image | prefixWith "${FUNCNAME[0]}( $image )"
+    docker build --pull -t asgard/$image $BASE_DIR/images/$image | prefixWith "${FUNCNAME[0]}( $image )"
 }
 
 # Prefixes the output with the function name and the current image
 prefixWith () {
     while read line
     do
-        echo -n -e "\033[0;34m"
+        echo -n -e "\033[0;32m"
         printf "%50s: " "$1"
         echo -n -e "\033[0m"
         echo $line
