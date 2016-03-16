@@ -3,15 +3,3 @@ workspace:
 
 environment:
     autoupdate: false
-
-databases:
-    valhalla:
-        host: localhost
-        database: valhalla
-        username: root
-        password:
-
-images:
-    - base
-    - data
-    - phpfpm

@@ -1,0 +1,31 @@
+web:
+    build: ./images/base
+    ports:
+        - "8000:80"
+    working_dir: /Users/etiennemarais/Documents/workspace/Sites
+    volumes:
+        - .:/app
+#web:
+#  image: asgard/nginx
+#  ports:
+#    - "8080:80"
+#  volumes:
+#    - ./conf:/var/www
+#    - ./conf/vhost.conf:/etc/nginx/sites-enabled/vhost.conf
+#  links:
+#    - php
+#php:
+#  image: nmcteam/php56
+#  volumes:
+#    - ./conf/php-fpm.conf:/etc/php5/fpm/php-fpm.conf
+#    - ./conf:/var/www
+#  links:
+#    - db
+#db:
+#  image: sameersbn/mysql
+#  volumes:
+#   - /var/lib/mysql
+#  environment:
+#   - DB_NAME=demoDb
+#   - DB_USER=demoUser
+#   - DB_PASS=demoPass

@@ -3,8 +3,8 @@
 # -t Is the tagname, Then is the actual filename and it gets prefixed with a pipe of the $image
 
 buildDockerImage() {
-    outputInYellow "[Building docker image: $*]"
-    docker build --pull -t asgard/$image $BASE_DIR/images/$image | prefixWith "${FUNCNAME[0]}( $image )"
+    outputInYellow "[Starting Environment]"
+    docker-compose up -d | prefixWith "${FUNCNAME[0]}()"
 }
 
 # Prefixes the output with the function name and the current image

@@ -39,6 +39,14 @@ checkForVolumeMountpoint() {
     outputInGreen "Done"
 }
 
+checkDockerComposeInstalled() {
+    if ! tool_loc="$(type -p "docker-compose")" || [ -z "tool_loc" ]; then
+        # install docker-compose here
+        error "docker-compose is not installed, Please install before continuing"
+    fi
+    outputInGreen "Done"
+}
+
 error() {
     echo -n -e "\033[0;31m"
     echo -e "$@"

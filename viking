@@ -4,7 +4,7 @@
 BASE_DIR=$( cd "$( dirname "$0" )" && pwd )
 
 # Autoload all the /src files
-for i in "${BASE_DIR}"/src/*.sh ; do
+for i in "${BASE_DIR}"/lib/*.sh ; do
     if [ -f "$i" ]; then
         . $i
     fi
@@ -16,19 +16,15 @@ eval $(parseYaml "${BASE_DIR}"/config.yml "config_")
 # Options to start the environment with
 case $1 in
     start)
-        outputInYellow "[Checking volume mount point]"
-        if [ -z "${config_workspace}" ]; then
-            error "Missing ${config_workspace} .. do you miss the config.yml file?"
-        fi
-        checkForVolumeMountpoint $config_workspace
+        outputInYellow "[Checking dependencies is installed]"
+        checkDockerComposeInstalled
 
         if [ "$config_environment_autoupdate" = "true" ]; then
             selfUpdateUsingGit
         fi
 
-        for image in ${config_images[@]} ; do
-            buildDockerImage $image
-        done
+        # TODO Run the docker-composer command here
+        buildDockerImage
     ;;
     *)
         exit_code=0
